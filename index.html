@@ -9,6 +9,31 @@
     </style>
 
     <script>
+      document.addEventListener('touchstart', function (evt) {
+        const sceneEl = document.querySelector('a-scene');
+        const touch = evt.touches[0];
+        
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        // Normalizar coordenadas táctiles entre -1 y 1
+        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, sceneEl.camera);
+
+        const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
+
+        if (intersects.length > 0) {
+          const intersected = intersects[0].object.el;
+          console.log('👉 Tocaste:', intersected);
+          // Aquí puedes hacer cosas con la entidad
+          intersected.setAttribute('color', '#FF0000');
+        }
+      });
+
+
+
       // Cubo: rotación continua
       /*
       AFRAME.registerComponent('cube-anim', {
@@ -36,6 +61,7 @@
       */
 
       // Esfera: desaparece al hacer clic
+      /*
       AFRAME.registerComponent('bola-interact', {
         init: function () {
           this.el.addEventListener('touchstart', function (evt) {
@@ -62,6 +88,9 @@
           });
         }
       });
+      */
+
+
     </script>
 
   </head>
