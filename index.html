@@ -1,119 +1,85 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Prueba_Web</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <title>AR.js animado y optimizado</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.1/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #info { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }
+    </style>
+
+    <script>
+      // Cubo: rotación continua
+      AFRAME.registerComponent('cube-anim', {
+        tick: function (time, timeDelta) {
+          const rot = this.el.getAttribute('rotation');
+          this.el.setAttribute('rotation', {
+            x: rot.x,
+            y: rot.y + (timeDelta * 0.05),
+            z: rot.z
+          });
+        }
+      });
+
+      // Toroide: pulso en escala
+      AFRAME.registerComponent('torus-anim', {
+        tick: function (time) {
+          const scale = 1 + 0.5 * Math.abs(Math.sin(time / 500));
+          this.el.setAttribute('scale', { x: scale, y: scale, z: scale });
+        }
+      });
+
+      // Cilindro: cambio de color
+      AFRAME.registerComponent('cilindro-color', {
+        tick: function (time) {
+          const t = Math.abs(Math.sin(time / 1000)); // 0 a 1
+          const r = Math.floor(255 * t);
+          const g = Math.floor(255 * (1 - t));
+          this.el.setAttribute('color', `rgb(${r},${g},0)`);
+        }
+      });
+
+      // Esfera: desaparece al hacer clic
+      AFRAME.registerComponent('bola-interact', {
+        init: function () {
+          this.el.addEventListener('click', () => {
+            this.el.setAttribute('visible', false);
+          });
+        }
+      });
+    </script>
+
   </head>
   <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Prueba_Web</div>
-      </div>
-    </div>
-    <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
+    <div id="info">Apunta al marcador Hiro y toca la esfera verde</div>
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+        
+        <!-- Cubo -->
+        <a-box id="cubo" position="0 0.5 0" color="red" 
+               cube-anim></a-box>
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WebGL Builds.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/WebGL Builds.data.gz",
-        frameworkUrl: buildUrl + "/WebGL Builds.framework.js.gz",
-        codeUrl: buildUrl + "/WebGL Builds.wasm.gz",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Prueba_Web",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      };
+        <!-- Esfera verde clicable ->
+        <a-sphere id="bola" position="1 1 0" radius="0.3" color="green" 
+                  bola-interact class="clickable"></a-sphere>
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+        <!-- Cilindro -->
+        <a-cylinder id="cilindro" position="-1 0.75 0" radius="0.2" height="1.5"
+                    color="yellow"  cilindro-color></a-cylinder>
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
+        <!-- Plano -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#ccc"></a-plane>
 
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
+      </a-marker>
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+      <a-entity camera>
+        <a-cursor raycaster="objects: .clickable" fuse="false"
+                  material="color: white; shader: flat" position="0 0 -1">
+        </a-cursor>
+      </a-entity>
+    </a-scene>
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
-    </script>
   </body>
 </html>
