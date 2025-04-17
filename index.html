@@ -37,9 +37,7 @@
   */
 
   // Esfera: desaparece al hacer clic
-  AFRAME.registerComponent('bola-interact', {
-    init: function () {
-      this.el.addEventListener('touchstart', function (evt) {
+  document.addEventListener('touchstart', function (evt) {
         const sceneEl = document.querySelector('a-scene');
         const touch = evt.touches[0];
         
@@ -56,13 +54,13 @@
 
         if (intersects.length > 0) {
           const intersected = intersects[0].object.el;
-          //console.log('👉 Tocaste:', intersected);
+          console.log('👉 Tocaste:', intersected);
           // Aquí puedes hacer cosas con la entidad
           intersected.setAttribute('color', '#FF0000');
         }
-      });
-    }
   });
+
+
 </script>
 
 </head>
@@ -77,7 +75,7 @@
             cube-anim></a-box>
   -->
       <!-- Esfera verde clicable -->
-      <a-sphere id="bola" position="1 1 0" radius="0.3" color="green" 
+      <a-sphere id="bola" position="0 0.5 0" radius="0.3" color="green" 
                 bola-interact class="clickable"></a-sphere>
 
       <!-- Cilindro 
