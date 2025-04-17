@@ -38,7 +38,7 @@
       // Esfera: desaparece al hacer clic
       AFRAME.registerComponent('bola-interact', {
         init: function () {
-          this.el.addEventListener('click', function (evt) {
+          this.el.addEventListener('touchstart', function (evt) {
             const sceneEl = document.querySelector('a-scene');
             const touch = evt.touches[0];
             
