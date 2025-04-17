@@ -10,6 +10,7 @@
 
     <script>
       // Cubo: rotación continua
+      /*
       AFRAME.registerComponent('cube-anim', {
         tick: function (time, timeDelta) {
           const rot = this.el.getAttribute('rotation');
@@ -20,8 +21,10 @@
           });
         }
       });
+      */
 
       // Cilindro: cambio de color
+      /*
       AFRAME.registerComponent('cilindro-color', {
         tick: function (time) {
           const t = Math.abs(Math.sin(time / 1000)); // 0 a 1
@@ -30,6 +33,7 @@
           this.el.setAttribute('color', `rgb(${r},${g},0)`);
         }
       });
+      */
 
       // Esfera: desaparece al hacer clic
       AFRAME.registerComponent('bola-interact', {
@@ -67,18 +71,18 @@
     <a-scene embedded arjs>
       <a-marker preset="hiro">
         
-        <!-- Cubo -->
+        <!-- Cubo 
         <a-box id="cubo" position="0 0.5 0" color="red" 
                cube-anim></a-box>
-
+-->
         <!-- Esfera verde clicable -->
         <a-sphere id="bola" position="1 1 0" radius="0.3" color="green" 
                   bola-interact class="clickable"></a-sphere>
 
-        <!-- Cilindro -->
+        <!-- Cilindro 
         <a-cylinder id="cilindro" position="-1 0.75 0" radius="0.2" height="1.5"
                     color="yellow"  cilindro-color></a-cylinder>
-
+-->
       </a-marker>
 
       <a-entity camera>
