@@ -16,13 +16,10 @@
 
   </head>
   <body>
-    <div id="info">Apunta al marcador Hiro y toca la esfera verde</div>
-
     <a-scene embedded arjs>
       <a-marker preset="hiro">
         
-        <a-sphere id="bola" position="1 1 0" radius="0.3" color="green" 
-                  bola-interact class="clickable"></a-sphere>
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
 
       </a-marker>
       <a-entity camera></a-entity>
