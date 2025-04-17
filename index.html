@@ -22,12 +22,14 @@
       });
 
       // Toroide: pulso en escala
+      /*
       AFRAME.registerComponent('torus-anim', {
         tick: function (time) {
           const scale = 1 + 0.5 * Math.abs(Math.sin(time / 500));
           this.el.setAttribute('scale', { x: scale, y: scale, z: scale });
         }
       });
+      */
 
       // Cilindro: cambio de color
       AFRAME.registerComponent('cilindro-color', {
@@ -43,7 +45,8 @@
       AFRAME.registerComponent('bola-interact', {
         init: function () {
           this.el.addEventListener('click', () => {
-            this.el.setAttribute('visible', false);
+            //this.el.setAttribute('visible', false);
+            this.el.setAttribute('color', '#FF69B4');
           });
         }
       });
@@ -60,7 +63,7 @@
         <a-box id="cubo" position="0 0.5 0" color="red" 
                cube-anim></a-box>
 
-        <!-- Esfera verde clicable ->
+        <!-- Esfera verde clicable -->
         <a-sphere id="bola" position="1 1 0" radius="0.3" color="green" 
                   bola-interact class="clickable"></a-sphere>
 
@@ -74,9 +77,6 @@
       </a-marker>
 
       <a-entity camera>
-        <a-cursor raycaster="objects: .clickable" fuse="false"
-                  material="color: white; shader: flat" position="0 0 -1">
-        </a-cursor>
       </a-entity>
     </a-scene>
 
