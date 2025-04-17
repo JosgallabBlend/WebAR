@@ -9,22 +9,86 @@
       #info { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }
     </style>
 
-    <script>
-      
+<script>
+  // Cubo: rotación continua
+  /*
+  AFRAME.registerComponent('cube-anim', {
+    tick: function (time, timeDelta) {
+      const rot = this.el.getAttribute('rotation');
+      this.el.setAttribute('rotation', {
+        x: rot.x,
+        y: rot.y + (timeDelta * 0.05),
+        z: rot.z
+      });
+    }
+  });
+  */
 
+  // Cilindro: cambio de color
+  /*
+  AFRAME.registerComponent('cilindro-color', {
+    tick: function (time) {
+      const t = Math.abs(Math.sin(time / 1000)); // 0 a 1
+      const r = Math.floor(255 * t);
+      const g = Math.floor(255 * (1 - t));
+      this.el.setAttribute('color', `rgb(${r},${g},0)`);
+    }
+  });
+  */
 
-    </script>
-
-  </head>
-  <body>
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
+  // Esfera: desaparece al hacer clic
+  AFRAME.registerComponent('bola-interact', {
+    init: function () {
+      this.el.addEventListener('touchstart', function (evt) {
+        const sceneEl = document.querySelector('a-scene');
+        const touch = evt.touches[0];
         
-        <a-box position="0 0.5 0" material="color: red;"></a-box>
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
 
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
+        // Normalizar coordenadas táctiles entre -1 y 1
+        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, sceneEl.camera);
+
+        const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
+
+        if (intersects.length > 0) {
+          const intersected = intersects[0].object.el;
+          //console.log('👉 Tocaste:', intersected);
+          // Aquí puedes hacer cosas con la entidad
+          intersected.setAttribute('color', '#FF0000');
+        }
+      });
+    }
+  });
+</script>
+
+</head>
+<body>
+  <div id="info">Apunta al marcador Hiro y toca la esfera verde</div>
+
+  <a-scene embedded arjs>
+    <a-marker preset="hiro">
+      
+      <!-- Cubo 
+      <a-box id="cubo" position="0 0.5 0" color="red" 
+            cube-anim></a-box>
+  -->
+      <!-- Esfera verde clicable -->
+      <a-sphere id="bola" position="1 1 0" radius="0.3" color="green" 
+                bola-interact class="clickable"></a-sphere>
+
+      <!-- Cilindro 
+      <a-cylinder id="cilindro" position="-1 0.75 0" radius="0.2" height="1.5"
+                  color="yellow"  cilindro-color></a-cylinder>
+  -->
+    </a-marker>
+
+    <a-entity camera>
+    </a-entity>
+  </a-scene>
 
   </body>
 </html>
