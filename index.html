@@ -38,26 +38,29 @@
 
   // Esfera: desaparece al hacer clic
   document.addEventListener('touchstart', function (evt) {
-        const sceneEl = document.querySelector('a-scene');
-        const touch = evt.touches[0];
+
+    window.alert('Touch'); 
+
+        //const sceneEl = document.querySelector('a-scene');
+        //const touch = evt.touches[0];
         
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
+        //const raycaster = new THREE.Raycaster();
+        //const mouse = new THREE.Vector2();
 
         // Normalizar coordenadas táctiles entre -1 y 1
-        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+        //mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+        //mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
 
-        raycaster.setFromCamera(mouse, sceneEl.camera);
+        //raycaster.setFromCamera(mouse, sceneEl.camera);
 
-        const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
+        //const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
 
-        if (intersects.length > 0) {
-          const intersected = intersects[0].object.el;
-          console.log('👉 Tocaste:', intersected);
+        //if (intersects.length > 0) {
+          //const intersected = intersects[0].object.el;
+          //console.log('👉 Tocaste:', intersected);
           // Aquí puedes hacer cosas con la entidad
-          intersected.setAttribute('color', '#FF0000');
-        }
+          //intersected.setAttribute('color', '#FF0000');
+        //}
   });
 
 
