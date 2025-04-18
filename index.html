@@ -75,9 +75,16 @@
         intersected.el.setAttribute('color', '#'+Math.floor(Math.random()*16777215).toString(16));
 
         // Reproducir sonido
-        const audio = document.querySelector('#audio-click');
-        audio.currentTime = 0; // Reiniciar desde el principio
-        audio.play();
+        if (!controlsMostrados) {
+          const audio = document.querySelector('#audio-click');
+          audio.currentTime = 0;
+          audio.play();
+
+          audio.style.display = 'block';
+          audio.setAttribute('controls', 'controls');
+
+          controlsMostrados = true;
+        }
 
       }
     }
@@ -88,22 +95,22 @@
 
 </head>
 <body>
-  <div id="info">Prueba código Sonido Local kids</div>
+  <div id="info">Prueba código Sonido Local kids 2</div>
 
-  <a-scene embedded arjs>
+  <a-scene embedded arjs vr-mode-ui="enabled: false">
     <a-marker preset="hiro">
       
       <!-- Cubo   -->
       <a-box id="cubo" position="0 0.5 0" color="blue"></a-box>
 
-      <a-entity id="sonido" sound="src: #audio-click; autoplay: false"></a-entity>
+      <!--<a-entity id="sonido" sound="src: #audio-click; autoplay: false"></a-entity>-->
 
     </a-marker>
 
     <a-entity camera></a-entity>
 
     <!-- Definición del sonido -->
-    <audio id="audio-click" src="audio/kids.mp3"></audio>
+    <audio id="audio-click" src="audio/kids.mp3" preload="auto" style="display:none;"></audio>
 
 
   </a-scene>
