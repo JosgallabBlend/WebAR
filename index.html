@@ -4,9 +4,11 @@
     <title>AR.js animado y optimizado</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+
+    <link rel="stylesheet" src="css/styles.css">
+
     <style>
-      body { margin: 0; overflow: hidden; }
-      #info { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }
+      
     </style>
 
 <script>
@@ -96,9 +98,9 @@
 
 </head>
 <body>
-  <div id="info">Prueba código Sonido Local kids 3</div>
+  <div id="info">Prueba código Sonido Local kids 4</div>
 
-  <a-scene embedded arjs >
+  <a-scene embedded arjs vr-mode-ui="enabled: false">
     <a-marker preset="hiro">
       
       <!-- Cubo   -->
@@ -111,7 +113,7 @@
     <a-entity camera></a-entity>
 
     <!-- Definición del sonido -->
-    <audio id="audio-click" src="audio/kids.mp3" preload="auto" style="display:none;"></audio>
+    <audio id="audio-click" src="audio/kids.mp3" preload="auto"></audio>
 
 
   </a-scene>
