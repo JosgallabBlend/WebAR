@@ -38,31 +38,44 @@
 
   // Esfera: desaparece al hacer clic
   document.addEventListener('touchstart', function (evt) {
-        const sceneEl = document.querySelector('a-scene');      
-        const touch = evt.touches[0];        
-        
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
+      // Crear raycaster
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    const sceneEl = document.querySelector('a-scene');
 
-        // Normalizar coordenadas táctiles entre -1 y 1
-        mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+    // Obtener posición normalizada de pantalla
+    const touch = event.touches[0];
+    const rect = sceneEl.canvas.getBoundingClientRect();
+    mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
 
-        raycaster.setFromCamera(mouse, sceneEl.camera);
+    // Definir raycaster desde cámara
+    const camera = sceneEl.camera;
+    raycaster.setFromCamera(mouse, camera);
 
-        const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
-        
-        if (intersects.length > 0) {
-          let intersectedObject = intersects[0].object;
-          while (intersectedObject && !intersectedObject.el) {
-            intersectedObject = intersectedObject.parent;
-            window.alert('intersectedObject '+intersectedObject);
-          }
+    // Obtener todos los objetos de A-Frame (solo visibles)
+    const objects = [];
+    sceneEl.object3D.traverse(function (obj) {
+      if (obj.el) {
+        objects.push(obj);
+      }
+    });
 
-          window.alert('intersectedObject.el '+intersectedObject.el);
-          // Aquí puedes hacer cosas con la entidad
-          intersectedObject.setAttribute('color', '#FF0000');
-        }
+    // Comprobar intersecciones
+    const intersects = raycaster.intersectObjects(objects, true);
+    if (intersects.length > 0) {
+      // Subir en la jerarquía hasta encontrar el objeto con .el
+      let intersected = intersects[0].object;
+      while (intersected && !intersected.el) {
+        intersected = intersected.parent;
+      }
+
+      if (intersected && intersected.el) {
+        console.log('Has tocado:', intersected.el.id);
+        // Cambiar color
+        intersected.el.setAttribute('color', '#'+Math.floor(Math.random()*16777215).toString(16));
+      }
+    }
   });
 
 
@@ -70,7 +83,7 @@
 
 </head>
 <body>
-  <div id="info">Prueba dentro del While</div>
+  <div id="info">Prueba código nuevo</div>
 
   <a-scene embedded arjs>
     <a-marker preset="hiro">
