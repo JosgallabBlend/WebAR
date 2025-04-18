@@ -75,10 +75,9 @@
         intersected.el.setAttribute('color', '#'+Math.floor(Math.random()*16777215).toString(16));
 
         // Reproducir sonido
-        const sound = document.querySelector('#sonido');
-        const audioClick = document.querySelector('#audio-click');
-        window.alert('audioClick '+audioClick);
-        sound.components.sound.playSound();
+        const audio = document.querySelector('#audio-click');
+        audio.currentTime = 0; // Reiniciar desde el principio
+        audio.play();
 
       }
     }
@@ -89,7 +88,7 @@
 
 </head>
 <body>
-  <div id="info">Prueba código Sonido Local 3</div>
+  <div id="info">Prueba código Sonido Local 4</div>
 
   <a-scene embedded arjs>
     <a-marker preset="hiro">
