@@ -39,7 +39,11 @@
   // Esfera: desaparece al hacer clic
   document.addEventListener('touchstart', function (evt) {
         const sceneEl = document.querySelector('a-scene');
+        window.alert('sceneEl: '+sceneEl);
+
         const touch = evt.touches[0];
+
+        
         
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
@@ -51,6 +55,7 @@
         raycaster.setFromCamera(mouse, sceneEl.camera);
 
         const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
+        window.alert('intersect: '+intersects);
 
         if (intersects.length > 0) {
           const intersected = intersects[0].object.el;
