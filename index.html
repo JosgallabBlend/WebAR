@@ -38,12 +38,8 @@
 
   // Esfera: desaparece al hacer clic
   document.addEventListener('touchstart', function (evt) {
-        const sceneEl = document.querySelector('a-scene');
-        
-
-        const touch = evt.touches[0];
-        window.alert('touch: '+touch);
-        
+        const sceneEl = document.querySelector('a-scene');      
+        const touch = evt.touches[0];        
         
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
@@ -55,12 +51,12 @@
         raycaster.setFromCamera(mouse, sceneEl.camera);
 
         const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
-        window.alert('intersect: '+intersects);
-
+        
         if (intersects.length > 0) {
           const intersected = intersects[0].object.el;
-          
-          window.alert(intersected);
+          window.alert('intersects[0] '+intersects[0]);
+          window.alert('intersects[0].object '+intersects[0].object);
+          window.alert('intersects[0].object.el '+intersects[0].object.el);
           // Aquí puedes hacer cosas con la entidad
           intersected.setAttribute('color', '#FF0000');
         }
