@@ -75,8 +75,8 @@
         intersected.el.setAttribute('color', '#'+Math.floor(Math.random()*16777215).toString(16));
 
         // Reproducir sonido
-        //const sound = document.querySelector('#sonido');
-        //sound.components.sound.playSound();
+        const sound = document.querySelector('#sonido');
+        sound.components.sound.playSound();
 
       }
     }
@@ -87,7 +87,7 @@
 
 </head>
 <body>
-  <div id="info">Prueba código Sonido 2</div>
+  <div id="info">Prueba código Sonido Local</div>
 
   <a-scene embedded arjs>
     <a-marker preset="hiro">
@@ -98,20 +98,12 @@
 
       <a-entity id="sonido" sound="src: #audio-click; autoplay: false"></a-entity>
 
-      <!-- Esfera verde clicable
-      <a-sphere id="bola" position="0 0.5 0" radius="0.3" color="green" 
-                bola-interact class="clickable"></a-sphere>
- -->
-      <!-- Cilindro 
-      <a-cylinder id="cilindro" position="-1 0.75 0" radius="0.2" height="1.5"
-                  color="yellow"  cilindro-color></a-cylinder>
-  -->
     </a-marker>
 
     <a-entity camera></a-entity>
 
     <!-- Definición del sonido -->
-    <audio id="audio-click" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f64a6be88e.mp3?filename=click-124467.mp3"></audio>
+    <audio id="audio-click" src="audio/sound.mp3"></audio>
 
 
   </a-scene>
