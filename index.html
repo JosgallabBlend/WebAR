@@ -39,10 +39,10 @@
   // Esfera: desaparece al hacer clic
   document.addEventListener('touchstart', function (evt) {
         const sceneEl = document.querySelector('a-scene');
-        window.alert('sceneEl: '+sceneEl);
+        
 
         const touch = evt.touches[0];
-
+        window.alert('touch: '+touch);
         
         
         const raycaster = new THREE.Raycaster();
