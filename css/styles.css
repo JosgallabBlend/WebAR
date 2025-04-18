@@ -16,4 +16,7 @@ body { margin: 0; overflow: hidden; }
   }
 
 
-
+#scene {
+    background-color: blueviolet;
+    opacity: 0.2;
+}
