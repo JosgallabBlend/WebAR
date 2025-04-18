@@ -76,6 +76,7 @@
 
         // Reproducir sonido
         const sound = document.querySelector('#sonido');
+        window.alert('sound '+sound);
         sound.components.sound.playSound();
 
       }
@@ -87,14 +88,13 @@
 
 </head>
 <body>
-  <div id="info">Prueba código Sonido Local</div>
+  <div id="info">Prueba código Sonido Local 2</div>
 
   <a-scene embedded arjs>
     <a-marker preset="hiro">
       
       <!-- Cubo   -->
-      <a-box id="cubo" position="0 0.5 0" color="blue" 
-            cube-anim></a-box>
+      <a-box id="cubo" position="0 0.5 0" color="blue"></a-box>
 
       <a-entity id="sonido" sound="src: #audio-click; autoplay: false"></a-entity>
 
