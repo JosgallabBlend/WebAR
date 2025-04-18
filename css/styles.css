@@ -2,8 +2,15 @@
 body { margin: 0; overflow: hidden; }
 /*#info { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }*/
 
+#info {
+    margin: 0 auto;
+    color: white; 
+    font-family: sans-serif; 
+}
+
 #audio-click {
-    margin: 1rem;
+    position: sticky;
+    margin: 0 auto;
     display: none;
     z-index: 10;
   }
