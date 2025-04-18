@@ -53,12 +53,14 @@
         const intersects = raycaster.intersectObjects(sceneEl.object3D.children, true);
         
         if (intersects.length > 0) {
-          const intersected = intersects[0].object.el;
-          window.alert('intersects[0] '+intersects[0]);
-          window.alert('intersects[0].object '+intersects[0].object);
-          window.alert('intersects[0].object.el '+intersects[0].object.el);
+          let intersectedObject = intersects[0].object;
+          while (intersectedObject && !intersectedObject.el) {
+            intersectedObject = intersectedObject.parent;
+          }
+
+          window.alert('intersectedObject.el '+intersectedObject.el);
           // Aquí puedes hacer cosas con la entidad
-          intersected.setAttribute('color', '#FF0000');
+          intersectedObject.setAttribute('color', '#FF0000');
         }
   });
 
