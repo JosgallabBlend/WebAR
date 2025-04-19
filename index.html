@@ -86,11 +86,30 @@
           audio.style.display = 'block';
           audio.setAttribute('controls', 'controls');
 
+          const cerrarBtn = document.getElementById('cerrarBtn');
+          cerrarBtn.style.display = 'block';
+
           controlsMostrados = true;
         }
 
       }
     }
+
+    document.getElementById('cerrarBtn').addEventListener('click', function () {
+      const audio = document.getElementById('audio-click');
+      const cerrarBtn = document.getElementById('cerrarBtn');
+
+      // Pausar y ocultar el audio
+      audio.pause();
+      audio.style.display = 'none';
+      audio.controls = false;
+
+      // Ocultar el botón de cerrar
+      cerrarBtn.style.display = 'none';
+    });
+
+
+
   });
 
 
@@ -98,10 +117,14 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba cambio link al css</div>
+  <div id="overlay">Prueba cambio botón cerrar audio</div>
 
   <!-- Definición del sonido -->
-  <audio id="audio-click" src="audio/kids.mp3" preload="auto"></audio>
+   <div id="audioDiv">
+    <audio id="audio-click" src="audio/kids.mp3" preload="auto"></audio>
+    <button id="cerrarBtn" style="display:none;">Cerrar</button>
+   </div>
+  
 
   <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
     
@@ -109,11 +132,12 @@
 
     <a-marker preset="hiro">
 
-      <!-- Entidad de texto 3D dentro de la escena -->
+      <!-- Entidad de texto 3D dentro de la escena
       <a-entity position="0 1 -2">
         <a-text value="Hola desde 3D" color="yellow" align="center"></a-text>
       </a-entity>
-      
+       -->
+
       <!-- Cubo   -->
       <a-box id="cubo" position="0 0.5 0" color="blue"></a-box>
 
