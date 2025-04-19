@@ -1,21 +1,28 @@
 body {
     margin: 0;
     overflow: hidden;
-}
+  }
 
-/*#info { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }*/
-
-#info {
+#overlay {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
     color: white;
-    font-family: sans-serif;
+    font-size: 20px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #audio-click {
-    position: sticky;
-    margin: 0 auto;
-    display: none;
+    position: absolute;
+    top: 30px;
+    left: 20px;
     z-index: 10;
+    color: white;
+    font-size: 20px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
