@@ -1,11 +1,16 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
 
-body { margin: 0; overflow: hidden; }
 /*#info { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }*/
 
 #info {
-    margin: 0 auto;
-    color: white; 
-    font-family: sans-serif; 
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-family: sans-serif;
 }
 
 #audio-click {
@@ -13,10 +18,4 @@ body { margin: 0; overflow: hidden; }
     margin: 0 auto;
     display: none;
     z-index: 10;
-  }
-
-
-#scene {
-    background-color: blueviolet;
-    opacity: 0.2;
 }
