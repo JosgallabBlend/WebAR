@@ -9,8 +9,19 @@
 
     <style>
       body {
-          margin: 0;
-          overflow: hidden;
+        margin: 0;
+        overflow: hidden;
+      }
+      #overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+        color: white;
+        font-size: 20px;
+        background: rgba(0,0,0,0.5);
+        padding: 10px;
+        border-radius: 10px;
       }
     </style>
 
@@ -101,12 +112,18 @@
 
 </head>
 <body>
-  <div id="info">Prueba código estilos en el head</div>
+  <div id="overlay">¡Hola desde HTML!</div>
 
   <!-- Definición del sonido -->
   <audio id="audio-click" src="audio/kids.mp3" preload="auto"></audio>
 
   <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
+    <!-- Entidad de texto 3D dentro de la escena -->
+    <a-entity position="0 1 -2">
+      <a-text value="Hola desde 3D" color="yellow" align="center"></a-text>
+    </a-entity>
+
+
     <a-marker preset="hiro">
       
       <!-- Cubo   -->
