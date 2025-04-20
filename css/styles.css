@@ -17,7 +17,7 @@ body {
 
 #audioDiv {
   position: absolute;
-  display: flex;
+  display: none;
   align-items: center;
   top: 15%;
   left: 50%;
@@ -28,8 +28,7 @@ body {
   background: rgba(0,0,0,0.5);
   /*padding: 10px;*/
   border-radius: 10px;
-  display: none;
-  border: 1px solid black;
+  gap: 10px;
 }
 
 #audioClick {
