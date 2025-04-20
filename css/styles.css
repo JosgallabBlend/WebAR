@@ -17,6 +17,7 @@ body {
 
 #audioDiv {
   position: absolute;
+  display: flex;
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
@@ -36,6 +37,7 @@ body {
 #cerrarBtn {
   display: flex;
   border-radius: 50%;
+  border-collapse: separate; 
   padding: 5%;
   color: white;
   background-color: red;
