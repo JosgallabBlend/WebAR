@@ -91,7 +91,7 @@
           //audio.setAttribute('controls', 'controls');
 
           // Reproducir audio
-          const audio = document.getElementById('audio-click');
+          const audio = document.getElementById('audioClick');
           audio.currentTime = 0;
           audio.play();
           
@@ -108,7 +108,7 @@
 
     
     document.getElementById('cerrarBtn').addEventListener('click', function () {
-      const audio = document.getElementById('audio-click');
+      const audio = document.getElementById('audioClick');
       //const cerrarBtn = document.getElementById('cerrarBtn');
 
       // Pausar y ocultar el audio
@@ -138,12 +138,12 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba cambio botón cerrar audio con Div 5</div>
+  <div id="overlay">Prueba 6</div>
 
   <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">
-    <audio id="audio-click" src="audio/kids.mp3" preload="auto" controls></audio>
-    <button id="cerrarBtn" >Cerrar</button>
+    <audio id="audioClick" src="audio/kids.mp3" preload="auto" controls></audio>
+    <button id="cerrarBtn" >X</button>
    </div>
   
 
@@ -162,7 +162,7 @@
       <!-- Cubo   -->
       <a-box id="cubo" position="0 0.5 0" color="blue"></a-box>
 
-      <!--<a-entity id="sonido" sound="src: #audio-click; autoplay: false"></a-entity>-->
+      <!--<a-entity id="sonido" sound="src: #audioClick; autoplay: false"></a-entity>-->
 
     </a-marker>
 
