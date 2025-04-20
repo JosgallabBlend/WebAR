@@ -59,13 +59,17 @@
 
     // Obtener todos los objetos de A-Frame (solo visibles)
     const objects = [];
+    let array = "";
     sceneEl.object3D.traverse(function (obj) {
       if (obj.el) {
         objects.push(obj);
+        array += obj.el.tagName+", ";
       }
     });
 
-    window.alert('objects'+objects);
+
+
+    window.alert('objects: '+array);
 
     // Comprobar intersecciones
     const intersects = raycaster.intersectObjects(objects, true);
@@ -136,7 +140,7 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba 15</div>
+  <div id="overlay">Prueba 16</div>
 
   <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">
