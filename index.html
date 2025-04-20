@@ -48,7 +48,7 @@
     const sceneEl = document.querySelector('a-scene');
 
     // Obtener posición normalizada de pantalla
-    const touch = event.touches[0];
+    const touch = evt.touches[0];
     const rect = sceneEl.canvas.getBoundingClientRect();
     mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
     mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
@@ -107,7 +107,7 @@
       }
       
     }
-});
+  });
 
   document.getElementById('cerrarBtn').addEventListener('click', function () {
     const audio = document.getElementById('audioClick');
@@ -124,8 +124,7 @@
 
     // Ocultamos el div con elementos audio
     const audioDiv = document.getElementById('audioDiv'); 
-    audioDiv.style.display = 'flex';
-    audioDiv.style.alignItems = 'center';
+    audioDiv.style.display = 'none';
 
     controlsMostrados = false;
 
