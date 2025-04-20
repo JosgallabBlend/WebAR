@@ -105,40 +105,34 @@
       }
       
     }
-
-    
-    document.getElementById('cerrarBtn').addEventListener('click', function () {
-      const audio = document.getElementById('audioClick');
-      //const cerrarBtn = document.getElementById('cerrarBtn');
-
-      // Pausar y ocultar el audio
-      audio.pause();
-      //audio.style.display = 'none';
-      //audio.controls = false;
-      
-
-      // Ocultar el botón de cerrar
-      //cerrarBtn.style.display = 'none';
-
-      // Ocultamos el div con elementos audio
-      const audioDiv = document.getElementById('audioDiv'); 
-      audioDiv.style.display = 'none';
-
-      controlsMostrados = false;
-
-    });
-    
-
-
-
   });
 
+  document.getElementById('cerrarBtn').addEventListener('click', function () {
+    const audio = document.getElementById('audioClick');
+    //const cerrarBtn = document.getElementById('cerrarBtn');
+
+    // Pausar y ocultar el audio
+    audio.pause();
+    //audio.style.display = 'none';
+    //audio.controls = false;
+    
+
+    // Ocultar el botón de cerrar
+    //cerrarBtn.style.display = 'none';
+
+    // Ocultamos el div con elementos audio
+    const audioDiv = document.getElementById('audioDiv'); 
+    audioDiv.style.display = 'none';
+
+    controlsMostrados = false;
+
+  });
 
 </script>
 
 </head>
 <body>
-  <div id="overlay">Prueba 8</div>
+  <div id="overlay">Prueba 9</div>
 
   <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">

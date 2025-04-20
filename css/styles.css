@@ -17,7 +17,7 @@ body {
 
 #audioDiv {
   position: absolute;
-  display: flex;
+  display: inline;
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
@@ -31,11 +31,9 @@ body {
 }
 
 #audioClick {
-  display: flex;
 }
 
 #cerrarBtn {
-  display: flex;
   border-radius: 50%;
   border-collapse: separate; 
   padding: 5%;
