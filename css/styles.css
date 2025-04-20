@@ -17,7 +17,8 @@ body {
 
 #audioDiv {
   position: absolute;
-  display: inline;
+  display: flex;
+  align-items: center;
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
@@ -36,8 +37,8 @@ body {
 #cerrarBtn {
   border-radius: 50%;
   border-collapse: separate; 
-  padding: 5%;
   color: white;
   background-color: red;
   font-size: 16px;
+  font-weight: bolder;
 }
