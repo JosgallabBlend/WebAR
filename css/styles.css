@@ -5,7 +5,7 @@ body {
 
 #overlay {
     position: absolute;
-    top: 10px;
+    top: 5%;
     left: 20px;
     z-index: 10;
     color: white;
@@ -17,7 +17,7 @@ body {
 
 #audioDiv {
     position: absolute;
-    top: 30px;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
