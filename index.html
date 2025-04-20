@@ -60,10 +60,11 @@
     // Obtener todos los objetos de A-Frame (solo visibles)
     const objects = [];
     let array = "";
+    let markerNotVisible = false;
     sceneEl.object3D.traverse(function (obj) {
       if (obj.el && obj.el.tagName === 'A-MARKER' && obj.visible == false) {
         window.alert('marker: '+obj.el.tagName);
-        return;
+        markerNotVisible = true;
       }
 
       if (obj.el && obj.visible) {
@@ -72,7 +73,7 @@
       }
     });
 
-
+    if (markerNotVisible) return;
 
     window.alert('objects: '+array);
 
@@ -145,7 +146,7 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba 20</div>
+  <div id="overlay">Prueba 21</div>
 
   <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">
