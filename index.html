@@ -85,22 +85,22 @@
           const audioDiv = document.getElementById('audioDiv'); 
           audioDiv.style.display = 'block';
 
-          /*
+          
           // Mostrar controles de audio
-          audio.style.display = 'block';
-          audio.setAttribute('controls', 'controls');
-
+          //audio.style.display = 'block';
+          //audio.setAttribute('controls', 'controls');
+/*
           // Reproducir audio
           const audio = document.getElementById('audio-click');
           audio.currentTime = 0;
           audio.play();
-
+          */
           // Mostrar botón para cerrar audio
-          const cerrarBtn = document.getElementById('cerrarBtn');
-          cerrarBtn.style.display = 'block';
+          //const cerrarBtn = document.getElementById('cerrarBtn');
+          //cerrarBtn.style.display = 'block';
 
           controlsMostrados = true;
-          */
+
         }
       }
       
@@ -135,12 +135,12 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba cambio botón cerrar audio con Div 4</div>
+  <div id="overlay">Prueba cambio botón cerrar audio con Div 5</div>
 
-  <!-- Definición del sonido -->
+  <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">
-    <audio id="audio-click" src="audio/kids.mp3" preload="auto"></audio>
-    <button id="cerrarBtn" style="display:none;">Cerrar</button>
+    <audio id="audio-click" src="audio/kids.mp3" preload="auto" controls></audio>
+    <button id="cerrarBtn" >Cerrar</button>
    </div>
   
 
