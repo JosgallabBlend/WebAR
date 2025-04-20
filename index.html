@@ -62,6 +62,7 @@
     let array = "";
     sceneEl.object3D.traverse(function (obj) {
       if (obj.el && obj.el.tagName === 'A-MARKER' && obj.visible == false) {
+        window.alert('marker: '+obj.el.tagName);
         return;
       }
 
@@ -144,7 +145,7 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba 19</div>
+  <div id="overlay">Prueba 20</div>
 
   <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">
