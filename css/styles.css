@@ -29,6 +29,7 @@ body {
   /*padding: 10px;*/
   border-radius: 10px;
   display: none;
+  border: 1px solid black;
 }
 
 #audioClick {
