@@ -69,13 +69,13 @@
 
       if (obj.el && obj.visible) {
         objects.push(obj);
-        array += obj.el.tagName+", ";
+        //array += obj.el.tagName+", ";
       }
     });
 
     if (markerNotVisible) return;
 
-    window.alert('objects: '+array);
+    //window.alert('objects: '+array);
 
     // Comprobar intersecciones
     const intersects = raycaster.intersectObjects(objects, true);
@@ -146,7 +146,7 @@
 
 </head>
 <body>
-  <div id="overlay">Prueba 22</div>
+  <!--<div id="overlay">Prueba 22</div>-->
 
   <!-- Definición del sonido style="display:none;"-->
    <div id="audioDiv">
