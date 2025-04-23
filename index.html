@@ -7,143 +7,6 @@
 
    <link rel="stylesheet" href="css/styles.css">
 
-    <style>
-      
-    </style>
-
-<script>
-  // Cubo: rotación continua
-  /*
-  AFRAME.registerComponent('cube-anim', {
-    tick: function (time, timeDelta) {
-      const rot = this.el.getAttribute('rotation');
-      this.el.setAttribute('rotation', {
-        x: rot.x,
-        y: rot.y + (timeDelta * 0.05),
-        z: rot.z
-      });
-    }
-  });
-  */
-
-  // Cilindro: cambio de color
-  /*
-  AFRAME.registerComponent('cilindro-color', {
-    tick: function (time) {
-      const t = Math.abs(Math.sin(time / 1000)); // 0 a 1
-      const r = Math.floor(255 * t);
-      const g = Math.floor(255 * (1 - t));
-      this.el.setAttribute('color', `rgb(${r},${g},0)`);
-    }
-  });
-  */
-  //document.getElementById("audioDiv").style.display = "none";
-  let controlsMostrados = false;
-
-  // Esfera: desaparece al hacer clic
-  document.addEventListener('touchstart', function (evt) {
-      // Crear raycaster
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    const sceneEl = document.querySelector('a-scene');
-
-    // Obtener posición normalizada de pantalla
-    const touch = evt.touches[0];
-    const rect = sceneEl.canvas.getBoundingClientRect();
-    mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
-
-    // Definir raycaster desde cámara
-    const camera = sceneEl.camera;
-    raycaster.setFromCamera(mouse, camera);
-
-    // Obtener todos los objetos de A-Frame (solo visibles)
-    const objects = [];
-    let array = "";
-    let markerNotVisible = false;
-    sceneEl.object3D.traverse(function (obj) {
-      if (obj.el && obj.el.tagName === 'A-MARKER' && obj.visible == false) {
-        //window.alert('marker: '+obj.el.tagName);
-        markerNotVisible = true;
-      }
-
-      if (obj.el && obj.visible) {
-        objects.push(obj);
-        //array += obj.el.tagName+", ";
-      }
-    });
-
-    if (markerNotVisible) return;
-
-    //window.alert('objects: '+array);
-
-    // Comprobar intersecciones
-    const intersects = raycaster.intersectObjects(objects, true);
-    if (intersects.length > 0) {
-      // Subir en la jerarquía hasta encontrar el objeto con .el
-      let intersected = intersects[0].object;
-      while (intersected && !intersected.el) {
-        intersected = intersected.parent;
-      }
-
-      
-      if (intersected && intersected.el) {
-        // Cambiar color
-        intersected.el.setAttribute('color', '#'+Math.floor(Math.random()*16777215).toString(16));
-
-        // Reproducir sonido
-        if (!controlsMostrados) {
-
-          // Mostrar div con elementos audio
-          const audioDiv = document.getElementById('audioDiv'); 
-          audioDiv.style.display = 'flex';
-          audioDiv.style.alignItems = 'center';
-
-          
-          // Mostrar controles de audio
-          //audio.style.display = 'block';
-          //audio.setAttribute('controls', 'controls');
-
-          // Reproducir audio
-          const audio = document.getElementById('audioClick');
-          audio.currentTime = 0;
-          audio.play();
-          
-          // Mostrar botón para cerrar audio
-          //const cerrarBtn = document.getElementById('cerrarBtn');
-          //cerrarBtn.style.display = 'block';
-
-          controlsMostrados = true;
-
-        }
-      }
-      
-    }
-  });
-
-  document.getElementById('cerrarBtn').addEventListener('click', function () {
-    const audio = document.getElementById('audioClick');
-    //const cerrarBtn = document.getElementById('cerrarBtn');
-
-    // Pausar y ocultar el audio
-    audio.pause();
-    //audio.style.display = 'none';
-    //audio.controls = false;
-    
-
-    // Ocultar el botón de cerrar
-    //cerrarBtn.style.display = 'none';
-
-    // Ocultamos el div con elementos audio
-    const audioDiv = document.getElementById('audioDiv'); 
-    audioDiv.style.display = 'none';
-
-    controlsMostrados = false;
-
-  });
-
-</script>
-
 </head>
 <body>
   <!--<div id="overlay">Prueba 22</div>-->
@@ -168,7 +31,7 @@
        -->
 
       <!-- Cubo   -->
-      <a-box id="cubo" position="0 0.5 0" color="blue"></a-box>
+      <a-box id="cubo" position="0 0.5 0" color="red"></a-box>
 
       <!--<a-entity id="sonido" sound="src: #audioClick; autoplay: false"></a-entity>-->
 
@@ -176,6 +39,8 @@
 
     <a-entity camera></a-entity>
   </a-scene>
+
+  <script src="js/main.js"></script>
 
   </body>
 </html>
