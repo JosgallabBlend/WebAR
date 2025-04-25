@@ -3,7 +3,7 @@
   <head>
     <title>AR.js animado y optimizado</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.js"></script>
 
    <link rel="stylesheet" href="css/styles.css">
 
@@ -19,34 +19,13 @@
   
 
   <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
-    
-
-
     <a-marker preset="hiro">
-
-      <!-- Entidad de texto 3D dentro de la escena
-      <a-entity position="0 1 -2">
-        <a-text value="Hola desde 3D" color="yellow" align="center"></a-text>
-      </a-entity>
-       -->
-
       <!-- Cubo   -->
       <a-box id="cubo" position="0 0.5 0" color="red"></a-box>
-
-      <!--<a-entity id="sonido" sound="src: #audioClick; autoplay: false"></a-entity>-->
-
     </a-marker>
-
-<!-- 
-    <a-marker type="pattern" url="markers/pattern-zorro.patt">
-      <a-box position="0 0.5 0" color="red"></a-box>
-    </a-marker>
-  -->  
-
-  <a-nft type="nft" url="image/zorro" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
-    <a-sphere position="0 0.5 0" color="blue"></a-sphere>
-  </a-nft>
-
+    <a-nft type="nft" url="image/zorro" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
+      <a-sphere position="0 0.5 0" color="blue"></a-sphere>
+    </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
 
