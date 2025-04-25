@@ -27,7 +27,7 @@
   <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
     <a-marker preset="hiro">
       <!-- Cubo   -->
-      <a-box id="cubo" position="0 0.5 0" color="blue"></a-box>
+      <a-box id="cubo" position="0 0.5 0" color="red"></a-box>
     </a-marker>
     <a-nft type="nft" url="image/zorro" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
       <a-sphere position="0 0.5 0" color="blue"></a-sphere>
@@ -36,6 +36,12 @@
   </a-scene>
 
   <script src="js/main.js"></script>
+
+  <script>
+    document.querySelector('a-nft').addEventListener('markerFound', () => {
+      document.querySelector('#status').setAttribute('text', 'value: ¡Detectado!');
+    });
+  </script>
 
   </body>
 </html>

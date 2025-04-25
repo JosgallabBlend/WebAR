@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-let controlsMostrados = false;
+
+    const nftMarker = document.querySelector('a-nft');
+
+    nftMarker.addEventListener('markerFound', () => {
+      alert('¡Marcador NFT detectado!');
+    });
+
+
+    let controlsMostrados = false;
 
     document.addEventListener('touchstart', function (evt) {
         const raycaster = new THREE.Raycaster();
