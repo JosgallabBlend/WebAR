@@ -27,21 +27,25 @@
   
 
   <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
+
+    <!-- 
     <a-marker preset="hiro">
-      <!-- Cubo   -->
+      
       <a-box id="cubo" position="0 0.5 0" color="white"></a-box>
     </a-marker>
     <a-nft type="nft" url="image/zorro" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
       <a-sphere position="0 0.5 0" color="blue"></a-sphere>
     </a-nft>
+    -->
 
     <a-text id="status" value="Esperando marcador..." position="0 2 -3" color="white"></a-text>
     <a-entity camera>
-      <a-text id="status"
-        value="Esperando marcador..."
-        position="0 -0.5 -1"
-        color="yellow"
-        width="3">
+      <a-text value="Texto visible"
+          position="0 0 -2"
+          color="lime"
+          width="6"
+          text="align: center"
+          side="double">
   </a-text>
     </a-entity>
   </a-scene>
