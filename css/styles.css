@@ -16,6 +16,20 @@ body {
   pointer-events: none;
 }
 
+#status {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  z-index: 10;
+  color: white;
+  font-size: 20px;
+  background: rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+
 #audioDiv {
   position: absolute;
   display: none;
