@@ -2,8 +2,11 @@
 <html>
   <head>
     <title>AR.js animado y optimizado</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.js"></script>
+    <!--<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar-nft.js"></script>-->
+
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
    <link rel="stylesheet" href="css/styles.css">
 
@@ -21,7 +24,7 @@
   <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
     <a-marker preset="hiro">
       <!-- Cubo   -->
-      <a-box id="cubo" position="0 0.5 0" color="red"></a-box>
+      <a-box id="cubo" position="0 0.5 0" color="green"></a-box>
     </a-marker>
     <a-nft type="nft" url="image/zorro" smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
       <a-sphere position="0 0.5 0" color="blue"></a-sphere>
