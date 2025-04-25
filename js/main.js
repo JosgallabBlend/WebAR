@@ -2,8 +2,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const nftMarker = document.querySelector('a-nft');
 
+    nftMarker.addEventListener('loaded', () => {
+        document.querySelector('#status').setAttribute('value','a-nft cargado');
+    });
+
+
     nftMarker.addEventListener('markerFound', () => {
-      alert('¡Marcador NFT detectado!');
+        document.querySelector('#status').setAttribute('value', '¡Detectado!');
     });
 
 
