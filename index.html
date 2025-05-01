@@ -26,7 +26,26 @@
    </div>
   
 
-  <a-scene embedded arjs vr-mode-ui="enabled: false" id="scene">
+  <a-scene 
+    embedded 
+    renderer="logarithmicDepthBuffer: true;"
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;" 
+    vr-mode-ui="enabled: false" 
+    id="scene">
+
+    <a-nft
+      type="nft"
+      url="https://raw.githack.com/josgallabblend/ARLocation/main/image/zorro"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+      scale="5 5 5"
+    >
+      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+      <a-box id="cubo" position="0 0.5 0" color="red" scale="50 50 50"></a-box>
+
+    </a-nft>
 
     
     <a-marker preset="hiro">
@@ -40,7 +59,7 @@
     <!-- <a-text id="status" value="Esperando marcador..." position="0 2 -3" color="white"></a-text>-->
     <a-entity camera>
       <a-text id="status" 
-          value="Esperando marcador 3"
+          value="Esperando marcador 4"
           position="0 0 -9"
           color="lime"
           width="6"
