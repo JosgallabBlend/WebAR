@@ -34,8 +34,9 @@
     id="scene">
 
     <a-nft
+      id = "zorro"
       type="nft"
-      url="https://raw.githack.com/josgallabblend/ARLocation/main/image/zorro"
+      url="https://raw.githack.com/josgallabblend/ARLocation/main/image/zorro/zorro"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
@@ -47,11 +48,27 @@
 
     </a-nft>
 
+    <a-nft
+      id="simbolo"
+      type="nft"
+      url="https://raw.githack.com/josgallabblend/ARLocation/main/image/simbolo/simbolo"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+      scale="5 5 5"
+    >
+      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+      <a-box id="cubo" position="0 0.5 0" color="blue" scale="50 50 50"></a-box>
+
+    </a-nft>
+
     
+    <!--  
     <a-marker preset="hiro">
       <a-box id="cubo" position="0 0.5 0" color="white"></a-box>
     </a-marker>
-    
+    -->
 
     <!-- <a-text id="status" value="Esperando marcador..." position="0 2 -3" color="white"></a-text>-->
     <a-entity camera>
