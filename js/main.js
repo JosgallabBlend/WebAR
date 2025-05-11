@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             audioDiv.style.alignItems = 'center';
 
             const audio = document.getElementById('audioClick');
-            var srcRoute = "audio/"+audio.id.toString();
+            var srcRoute = "audio/"+audio.id.toString()+".mp3";
             console.log(srcRoute);
             audio.setAttribute("src", srcRoute );
             audio.currentTime = 0;
