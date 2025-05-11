@@ -57,11 +57,22 @@ document.addEventListener('DOMContentLoaded', function () {
             audioDiv.style.alignItems = 'center';
 
             const audio = document.getElementById('audioClick');
-            var srcRoute = "audio/"+audio.id.toString()+".mp3";
-            console.log(srcRoute);
-            audio.setAttribute("src", srcRoute );
-            audio.currentTime = 0;
-            audio.play();
+            
+            // Busca el valor del atributo personalizado
+            let audioSrc = intersected.el.getAttribute('data-audio');
+
+            // Si no está en el hijo, busca en el padre <a-nft>
+            if (!audioSrc && intersected.el.parentEl) {
+                audioSrc = intersected.el.parentEl.getAttribute('data-audio');
+            }
+
+            if (audioSrc) {
+                audio.setAttribute("src", "audio/" + audioSrc + ".mp3");
+                audio.currentTime = 0;
+                audio.play();
+            } else {
+                console.warn("No se encontró atributo 'data-audio' en el elemento tocado.");
+            }
 
             controlsMostrados = true;
             }
