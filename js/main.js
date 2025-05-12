@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (audioSrc) {
+                audio.pause();
                 audio.setAttribute("src", "audio/" + audioSrc + ".mp3");
                 audio.currentTime = 0;
                 audio.play();
