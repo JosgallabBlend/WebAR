@@ -57,11 +57,13 @@ document.addEventListener('DOMContentLoaded', function () {
             audioDiv.style.display = 'flex';
             audioDiv.style.alignItems = 'center';
 
+            let audioSrc = "";
+
             // Busca el valor del atributo personalizado
-            let audioSrc = intersected.el.getAttribute('data-audio');
+            audioSrc = intersected.el.getAttribute('data-audio');
 
             // Si no está en el hijo, busca en el padre <a-nft>
-            if (!audioSrc && intersected.el.parentEl) {
+            while (!audioSrc && intersected.el.parentEl) {
                 audioSrc = intersected.el.parentEl.getAttribute('data-audio');
             }
 
