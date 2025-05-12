@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const nftMarker = document.querySelector('a-nft');
+    const audioDiv = document.getElementById('audioDiv');
+    const audio = document.getElementById('audioClick');
+
 
     nftMarker.addEventListener('loaded', () => {
         document.querySelector('#status').setAttribute('value','a-nft cargado');
@@ -51,13 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (intersected && intersected.el) {
             intersected.el.setAttribute('color', '#' + Math.floor(Math.random() * 16777215).toString(16));
 
-            if (!controlsMostrados) {
-            const audioDiv = document.getElementById('audioDiv');
             audioDiv.style.display = 'flex';
             audioDiv.style.alignItems = 'center';
 
-            const audio = document.getElementById('audioClick');
-            
             // Busca el valor del atributo personalizado
             let audioSrc = intersected.el.getAttribute('data-audio');
 
@@ -74,20 +73,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.warn("No se encontró atributo 'data-audio' en el elemento tocado.");
             }
 
-            controlsMostrados = true;
-            }
+            
         }
     }
 });
 
-document.getElementById('cerrarBtn').addEventListener('click', function () {
-    const audio = document.getElementById('audioClick');
+document.getElementById('cerrarBtn').addEventListener('click', hideAudio);
+
+
+function hideAudio(){
     audio.pause();
-
-    const audioDiv = document.getElementById('audioDiv');
     audioDiv.style.display = 'none';
+}
 
-    controlsMostrados = false;
+
+
 });
-});
+
+
   
